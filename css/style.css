@@ -1,0 +1,557 @@
+:root {
+  --primary-color: #8A2BE2;
+  --primary-color-light: #A75FFF;
+  --primary-color-medium: #7B24D0;
+  --primary-color-dark: #5D1A9C;
+  --dark-bg: #121212;
+  --light-text: #EAEAEA;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+
+h1, h2, h3, h4, h5, h6, .card-title {
+  font-family: 'Poppins', sans-serif;
+}
+
+#hero {
+  min-height: 100vh;
+  position: relative;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../imagenes/bruno dando una charla a color con pose de orador blanco y negro.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px; /* Altura del degradado */
+  background: linear-gradient(to top, var(--dark-bg), transparent);
+}
+
+#hero .hero-content {
+  z-index: 1;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--light-text);
+}
+
+h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: darken(var(--primary-color), 10%);
+  border-color: darken(var(--primary-color), 10%);
+}
+
+.btn-outline-light {
+  border-color: var(--light-text);
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--light-text);
+  color: var(--dark-bg);
+}
+
+.glass-card {
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 8px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 0 0 20px 5px rgba(138, 43, 226, 0.7); /* Soft violet glow */
+  transform: translateY(-5px); /* Slight lift effect */
+}
+
+.glass-card .card-title {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+
+.glass-card .card-text {
+  font-size: 0.9rem;
+  color: var(--light-text);
+}
+
+.glass-card i {
+  color: var(--primary-color);
+}
+
+/* Flip Card Styles */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 150px; /* Adjust as needed */
+  perspective: 1000px;
+  transition: transform 0.3s ease; /* For hover lift effect */
+}
+
+.flip-card:hover {
+  transform: translateY(-5px); /* Slight lift effect */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  /* Apply glass-card styles here */
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: var(--light-text);
+  transition: box-shadow 0.3s ease; /* For hover glow effect */
+}
+
+.flip-card:hover .flip-card-front,
+.flip-card:hover .flip-card-back {
+  box-shadow: 0 0 20px 5px rgba(138, 43, 226, 0.7); /* Soft violet glow */
+}
+
+.flip-card-front {
+}
+
+.flip-card-logo {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5)); /* Weaker white glow */
+}
+
+.flip-card-back {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);
+  padding: 15px;
+}
+
+.social-link {
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: var(--light-text);
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: var(--primary-color);
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 3rem; /* Larger icon */
+  color: white; /* White icon on green background */
+  background-color: #25D366; /* WhatsApp green */
+  border-radius: 50%; /* Circular shape */
+  padding: 15px; /* Space around icon */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+  z-index: 1000;
+  display: flex; /* For centering the icon */
+  justify-content: center;
+  align-items: center;
+  text-decoration: none; /* Remove underline */
+  transition: all 0.3s ease; /* Smooth transitions */
+  animation: pulse 2s infinite; /* Pulse animation */
+  width: 78px; /* Explicit width for perfect circle */
+  height: 78px; /* Explicit height for perfect circle */
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1); /* Slight grow on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+}
+
+/* Keyframes for pulse animation */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.testimonial-row-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.video-card {
+  cursor: pointer;
+  max-width: 196px;
+  margin: 0 auto;
+}
+
+.video-crop-wrapper {
+  height: 250px;
+  overflow: hidden;
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+}
+
+.video-crop-wrapper > img,
+.video-crop-wrapper > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scroller Styles */
+.scroller-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  max-width: 628px; /* To fit 3 cards + margins */
+  margin: 0 auto; /* Center the scroller */
+}
+
+.scroller-wrapper::before,
+.scroller-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px; /* Width of the fade effect */
+  height: 100%;
+  z-index: 1; /* Ensure it's above the cards */
+  pointer-events: none; /* Allow clicks to pass through */
+}
+
+.scroller-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dark-bg), transparent);
+}
+
+.scroller-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dark-bg), transparent);
+}
+
+.scroller-inner {
+  display: flex;
+  width: calc(196px * 6 + 20px * 6); /* Card width * 6 + margin * 6 */
+  animation: scroll 30s linear infinite;
+}
+
+.scroller-wrapper:hover .scroller-inner {
+  animation-play-state: paused;
+}
+
+.scroller-inner .card {
+  flex-shrink: 0;
+  margin-right: 20px; /* Space between cards */
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-196px * 3 - 20px * 3)); }
+}
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Process Timeline Styles */
+.process-timeline {
+  max-width: 600px;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+.process-step {
+  text-align: left;
+  position: relative;
+  padding-left: 55px; /* Increased padding to prevent overlap */
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: transparent;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 10px;
+}
+
+.process-step i {
+  font-size: 2rem; /* Reduced icon size */
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.process-step h5 {
+  color: var(--light-text);
+  font-size: 1.1rem;
+}
+
+.process-step p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Vertical line */
+.process-step::before {
+  content: '';
+  position: absolute;
+  left: 15px; /* Position of the line */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--primary-color);
+}
+
+/* Dot */
+.process-step::after {
+  content: '';
+  position: absolute;
+  left: 12px; /* Position of the dot */
+  top: 15px; /* Adjust to align with text */
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Adjust first/last step line */
+.process-step:first-child::before {
+  top: 15px;
+}
+.process-step:last-child::before {
+  bottom: calc(100% - 15px);
+}
+
+#logos,
+#socials {
+  background: linear-gradient(to bottom, transparent, rgba(155, 89, 182, 0.2));
+}
+
+/* Service Card Enhancements */
+.service-badge {
+  display: inline-block;
+  padding: 0.3em 0.7em;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 50rem;
+  background-color: transparent;
+  border: 1px solid var(--primary-color-light);
+  color: var(--primary-color-light);
+}
+
+.section-main-title {
+  color: var(--light-text);
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.section-title {
+  color: var(--light-text) !important;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@media (min-width: 768px) {
+  .process-timeline {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+    max-width: 900px;
+  }
+
+  .process-step {
+    flex: 1;
+    text-align: center;
+    padding: 20px 10px;
+    margin-bottom: 0;
+    border-left: 1px solid var(--glass-border);
+    border-bottom: none; /* Remove bottom border for horizontal */
+  }
+
+  .process-step:first-child {
+    border-left: none;
+  }
+
+  .process-step i {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Hide vertical line and dot */
+  .process-step::before,
+  .process-step::after {
+    display: none;
+  }
+}
+
+.logos-row {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.logos-row .col-3 {
+  padding: 5px;
+}
+
+/* Logo Scroller Styles */
+.logo-scroller-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding: 20px 0;
+  max-width: 900px; /* Wider for logos */
+  margin: 0 auto;
+}
+
+.logo-scroller-wrapper::before,
+.logo-scroller-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.logo-scroller-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dark-bg), transparent);
+}
+
+.logo-scroller-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dark-bg), transparent);
+}
+
+.logo-scroller-inner {
+  display: flex;
+  /* 8 logos (4 original + 4 duplicate), 200px width + 10px margin */
+  width: calc(210px * 8);
+  animation: scroll-logos 40s linear infinite;
+}
+
+.logo-scroller-wrapper:hover .logo-scroller-inner {
+  animation-play-state: paused;
+}
+
+.logo-scroller-item {
+  width: 200px;
+  height: 120px; /* Increased height */
+  margin: 0 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-scroller-item a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-scroller-item img {
+  max-width: 100%;
+  max-height: 100%;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.logo-scroller-item:hover img {
+    filter: brightness(1);
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  /* 4 items * (200px width + 10px margin) */
+  100% { transform: translateX(calc(-210px * 4)); }
+}
+
+/* Final CTA Section */
+#final-cta {
+  padding: 80px 0;
+}
+
+.cta-image {
+  max-width: 300px;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.6);
+  animation: float-animation 6s ease-in-out infinite;
+}
+
+.cta-text h2 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+@keyframes float-animation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
