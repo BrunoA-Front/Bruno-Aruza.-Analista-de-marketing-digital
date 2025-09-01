@@ -85,7 +85,6 @@ h5 {
 .glass-card {
   background-color: var(--glass-bg);
   border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 8px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -252,52 +251,26 @@ h5 {
 
 /* Scroller Styles */
 .scroller-wrapper {
-  overflow: hidden;
+  display: flex;
+  align-items: center;
   position: relative;
-  padding: 20px 0;
-  max-width: 628px; /* To fit 3 cards + margins */
-  margin: 0 auto; /* Center the scroller */
+  max-width: 628px;
+  margin: 0 auto;
 }
 
-.scroller-wrapper::before,
-.scroller-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100px; /* Width of the fade effect */
-  height: 100%;
-  z-index: 1; /* Ensure it's above the cards */
-  pointer-events: none; /* Allow clicks to pass through */
-}
-
-.scroller-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, var(--dark-bg), transparent);
-}
-
-.scroller-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, var(--dark-bg), transparent);
+.scroller-viewport {
+    overflow: hidden;
+    width: 100%;
 }
 
 .scroller-inner {
   display: flex;
   width: calc(196px * 6 + 20px * 6); /* Card width * 6 + margin * 6 */
-  animation: scroll 30s linear infinite;
-}
-
-.scroller-wrapper:hover .scroller-inner {
-  animation-play-state: paused;
 }
 
 .scroller-inner .card {
   flex-shrink: 0;
   margin-right: 20px; /* Space between cards */
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-196px * 3 - 20px * 3)); }
 }
 
 .fade-in-section {
@@ -453,43 +426,22 @@ h5 {
 
 /* Logo Scroller Styles */
 .logo-scroller-wrapper {
-  overflow: hidden;
+  display: flex;
+  align-items: center;
   position: relative;
-  padding: 20px 0;
-  max-width: 900px; /* Wider for logos */
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.logo-scroller-wrapper::before,
-.logo-scroller-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  width: 100px;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.logo-scroller-wrapper::before {
-  left: 0;
-  background: linear-gradient(to right, var(--dark-bg), transparent);
-}
-
-.logo-scroller-wrapper::after {
-  right: 0;
-  background: linear-gradient(to left, var(--dark-bg), transparent);
+.logo-scroller-viewport {
+    overflow: hidden;
+    width: 100%;
 }
 
 .logo-scroller-inner {
   display: flex;
   /* 8 logos (4 original + 4 duplicate), 200px width + 10px margin */
   width: calc(210px * 8);
-  animation: scroll-logos 40s linear infinite;
-}
-
-.logo-scroller-wrapper:hover .logo-scroller-inner {
-  animation-play-state: paused;
 }
 
 .logo-scroller-item {
@@ -521,11 +473,26 @@ h5 {
     filter: brightness(1);
 }
 
-@keyframes scroll-logos {
-  0% { transform: translateX(0); }
-  /* 4 items * (200px width + 10px margin) */
-  100% { transform: translateX(calc(-210px * 4)); }
+.fade-overlay-left,
+.fade-overlay-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
 }
+
+.fade-overlay-left {
+    left: 0;
+    background: linear-gradient(to right, var(--dark-bg), transparent);
+}
+
+.fade-overlay-right {
+    right: 0;
+    background: linear-gradient(to left, var(--dark-bg), transparent);
+}
+
 
 /* Final CTA Section */
 #final-cta {
@@ -554,4 +521,3 @@ h5 {
     transform: translateY(-15px);
   }
 }
-
